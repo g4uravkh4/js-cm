@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-
+//1. create function to deposit money
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Enter amount to deposit: ");
@@ -13,6 +13,7 @@ const deposit = () => {
   }
 };
 
+//2.create function to deposit money at specific slot
 const getNumberOfLines = () => {
   while (true) {
     const lines = prompt("Enter number of lines to bet on (1-5): ");
@@ -26,5 +27,20 @@ const getNumberOfLines = () => {
   }
 };
 
-const depositAmount = deposit();
+//3.create function to get bet amount
+const getBet = (balance) => {
+  while (true) {
+    const bet = prompt("Enter total bet: ");
+    const numberBet = parseFloat(bet);
+
+    if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance) {
+      console.log("Invalid bet, try again please!");
+    } else {
+      return numberBet;
+    }
+  }
+};
+
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+const bet = getBet(balance);
